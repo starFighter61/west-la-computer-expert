@@ -341,7 +341,7 @@
                         <h3 class="text-xl font-semibold mb-2">Hardware Repair</h3>
                         <p class="text-gray-600 mb-4">Expert diagnosis and repair of computer hardware issues</p>
                         <div class="text-blue-600 font-medium mb-4">Starting from $49</div>
-                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-200 w-full" data-service="Hardware Repair">
+                        <button class="book-service-btn bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-200 w-full" data-service="Hardware Repair">
                             Book Now
                         </button>
                     </div>
@@ -355,7 +355,7 @@
                         <h3 class="text-xl font-semibold mb-2">Data Recovery</h3>
                         <p class="text-gray-600 mb-4">Professional recovery of lost or corrupted data</p>
                         <div class="text-blue-600 font-medium mb-4">Starting from $79</div>
-                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-200 w-full" data-service="Data Recovery">
+                        <button class="book-service-btn bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-200 w-full" data-service="Data Recovery">
                             Book Now
                         </button>
                     </div>
@@ -368,8 +368,8 @@
                         </div>
                         <h3 class="text-xl font-semibold mb-2">Virus Removal</h3>
                         <p class="text-gray-600 mb-4">Complete virus and malware removal service</p>
-                        <div class="text-blue-600 font-medium mb-4">Starting from $59</div>
-                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-200 w-full" data-service="Virus Removal">
+                        <div class="text-blue-600 font-medium mb-4">Starting from $69</div>
+                        <button class="book-service-btn bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-200 w-full" data-service="Virus Removal">
                             Book Now
                         </button>
                     </div>
@@ -388,26 +388,27 @@
         </div>
     </main>
 
-    <div id="booking-form">
+    <div id="booking-form" style="display: none;">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-8">Book a Service</h2>
             <form id="service-booking-form" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
                 <div class="space-y-4">
                     <div>
-                        <label for="booking-name" class="block mb-2 font-medium">Name</label>
-                        <input type="text" id="booking-name" name="booking-name" class="w-full p-2 border rounded" required>
+                        <label for="name" class="block mb-2 font-medium">Name</label>
+                        <input type="text" id="name" name="name" class="w-full p-2 border rounded" required>
                     </div>
                     <div>
-                        <label for="booking-email" class="block mb-2 font-medium">Email</label>
-                        <input type="email" id="booking-email" name="booking-email" class="w-full p-2 border rounded" required>
+                        <label for="email" class="block mb-2 font-medium">Email</label>
+                        <input type="email" id="email" name="email" class="w-full p-2 border rounded" required>
                     </div>
                     <div>
-                        <label for="booking-phone" class="block mb-2 font-medium">Phone</label>
-                        <input type="tel" id="booking-phone" name="booking-phone" class="w-full p-2 border rounded" required>
+                        <label for="phone" class="block mb-2 font-medium">Phone</label>
+                        <input type="tel" id="phone" name="phone" class="w-full p-2 border rounded" required>
                     </div>
                     <div>
-                        <label for="booking-service" class="block mb-2 font-medium">Service Type</label>
-                        <select id="booking-service" name="booking-service" class="w-full p-2 border rounded" required>
+                        <label for="service-type" class="block mb-2 font-medium">Service Type</label>
+                        <input type="hidden" id="service-type" name="service-type">
+                        <select id="service-select" class="w-full p-2 border rounded" required>
                             <option value="">Select a service</option>
                             <option value="Hardware Repair">Hardware Repair</option>
                             <option value="Software Issue">Software Issue</option>
@@ -417,21 +418,8 @@
                         </select>
                     </div>
                     <div>
-                        <label for="booking-date" class="block mb-2 font-medium">Preferred Date</label>
-                        <input type="date" id="booking-date" name="booking-date" class="w-full p-2 border rounded" required>
-                    </div>
-                    <div>
-                        <label for="booking-time" class="block mb-2 font-medium">Preferred Time</label>
-                        <select id="booking-time" name="booking-time" class="w-full p-2 border rounded" required>
-                            <option value="">Select time...</option>
-                            <option value="Morning (9AM - 12PM)">Morning (9AM - 12PM)</option>
-                            <option value="Afternoon (12PM - 4PM)">Afternoon (12PM - 4PM)</option>
-                            <option value="Evening (4PM - 7PM)">Evening (4PM - 7PM)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="booking-notes" class="block mb-2 font-medium">Additional Notes</label>
-                        <textarea id="booking-notes" name="booking-notes" class="w-full p-2 border rounded" rows="3"></textarea>
+                        <label for="message" class="block mb-2 font-medium">Additional Notes</label>
+                        <textarea id="message" name="message" class="w-full p-2 border rounded" rows="3"></textarea>
                     </div>
                     <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-200 w-full">
                         Book Service
