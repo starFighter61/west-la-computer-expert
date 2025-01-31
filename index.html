@@ -519,10 +519,18 @@
 
     <!-- Other Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="config.js"></script>
     <script>
+        // EmailJS Configuration
+        window.emailConfig = {
+            userId: 'Qois2JZE0LgoHE4BC',
+            serviceId: 'service_5i8r67b',
+            templateIdCustomer: 'template_7tcp9kf',
+            templateIdAdmin: 'template_91xgo8x'
+        };
+
+        // Initialize EmailJS
         (function() {
-            emailjs.init(emailConfig.userId);
+            emailjs.init(window.emailConfig.userId);
         })();
     </script>
     <script src="script.js"></script>

@@ -1,13 +1,21 @@
 {
   "version": 2,
   "builds": [
-    { "src": "*.html", "use": "@vercel/static" },
-    { "src": "*.js", "use": "@vercel/node" },
-    { "src": "*.css", "use": "@vercel/static" }
+    {
+      "src": "**/*",
+      "use": "@vercel/static"
+    }
   ],
   "routes": [
+    { "handle": "filesystem" },
     { "src": "/", "dest": "/index.html" },
     { "src": "/admin", "dest": "/admin.html" },
     { "src": "/(.*)", "dest": "/$1" }
-  ]
+  ],
+  "env": {
+    "EMAILJS_USER_ID": "@emailjs_user_id",
+    "EMAILJS_SERVICE_ID": "@emailjs_service_id",
+    "EMAILJS_TEMPLATE_ID_CUSTOMER": "@emailjs_template_id_customer",
+    "EMAILJS_TEMPLATE_ID_ADMIN": "@emailjs_template_id_admin"
+  }
 }
