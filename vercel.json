@@ -7,20 +7,40 @@
     }
   ],
   "routes": [
-    { 
+    {
       "src": "/script.js",
-      "headers": { "content-type": "application/javascript" },
-      "dest": "/script.js"
+      "dest": "/script.js",
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "application/javascript; charset=utf-8"
+      }
     },
-    { 
+    {
       "src": "/styles.css",
-      "headers": { "content-type": "text/css" },
-      "dest": "/styles.css"
+      "dest": "/styles.css",
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/css; charset=utf-8"
+      }
     },
-    { "handle": "filesystem" },
-    { "src": "/", "dest": "/index.html" },
-    { "src": "/admin", "dest": "/admin.html" },
-    { "src": "/(.*)", "dest": "/$1" }
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/admin",
+      "dest": "/admin.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1",
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate"
+      }
+    }
   ],
   "env": {
     "EMAILJS_USER_ID": "@emailjs_user_id",

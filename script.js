@@ -1,3 +1,17 @@
+// EmailJS Configuration
+const emailConfig = {
+    userId: 'Qois2JZE0LgoHE4BC',
+    serviceId: 'service_5i8r67b',
+    templateIdCustomer: 'template_7tcp9kf',
+    templateIdAdmin: 'template_91xgo8x'
+};
+
+// Initialize EmailJS
+(function() {
+    emailjs.init(emailConfig.userId);
+    console.log('EmailJS initialized');
+})();
+
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded, setting up event listeners');

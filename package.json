@@ -7,6 +7,21 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "nodemailer": "^6.10.0"
-  }
+    "autoprefixer": "^10.4.20",
+    "nodemailer": "^6.10.0",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^4.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/starFighter61/west-la-computer-expert.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/starFighter61/west-la-computer-expert/issues"
+  },
+  "homepage": "https://github.com/starFighter61/west-la-computer-expert#readme"
 }
