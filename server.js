@@ -1,42 +1,21 @@
-const http = require('http');
-const fs = require('fs');
+const express = require('express');
 const path = require('path');
+const app = express();
+const port = 3001;
 
-const server = http.createServer((req, res) => {
-    // Handle static files
-    let filePath = '.' + req.url;
-    if (filePath === './') {
-        filePath = './index.html';
-    }
+// Serve static files
+app.use(express.static(__dirname));
 
-    const extname = path.extname(filePath);
-    const contentType = {
-        '.html': 'text/html',
-        '.js': 'text/javascript',
-        '.css': 'text/css',
-        '.json': 'application/json',
-        '.png': 'image/png',
-        '.jpg': 'image/jpg',
-        '.gif': 'image/gif',
-    }[extname] || 'text/plain';
-
-    fs.readFile(filePath, (error, content) => {
-        if (error) {
-            if(error.code === 'ENOENT') {
-                res.writeHead(404);
-                res.end('File not found');
-            } else {
-                res.writeHead(500);
-                res.end('Server error: ' + error.code);
-            }
-        } else {
-            res.writeHead(200, { 'Content-Type': contentType });
-            res.end(content, 'utf-8');
-        }
-    });
+// Routes
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-const port = 3000;
-server.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}/`);
+app.get('/admin', (req, res) => {
+    res.sendFile(path.join(__dirname, 'admin.html'));
+});
+
+// Start server
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
 });
