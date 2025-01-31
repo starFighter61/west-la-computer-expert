@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>West LA Computer Expert - AI-Powered IT Solutions</title>
+    <meta name="title" content="West LA Computer Expert - AI-Powered IT Solutions">
+    <meta name="description" content="Expert computer repair and IT services in West Los Angeles. AI-powered diagnostics, same-day service, and competitive rates. Free consultation available.">
+    <meta name="keywords" content="computer repair, IT services, West LA, Los Angeles, tech support, computer expert, AI diagnostics, system optimization">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://westlacomputerexpert.tech/">
+    <meta property="og:title" content="West LA Computer Expert - AI-Powered IT Solutions">
+    <meta property="og:description" content="Expert computer repair and IT services in West Los Angeles. AI-powered diagnostics, same-day service, and competitive rates. Free consultation available.">
+    <meta property="og:image" content="https://westlacomputerexpert.tech/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://westlacomputerexpert.tech/">
+    <meta property="twitter:title" content="West LA Computer Expert - AI-Powered IT Solutions">
+    <meta property="twitter:description" content="Expert computer repair and IT services in West Los Angeles. AI-powered diagnostics, same-day service, and competitive rates. Free consultation available.">
+    <meta property="twitter:image" content="https://westlacomputerexpert.tech/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <meta rel="canonical" href="https://westlacomputerexpert.tech/">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="West LA Computer Expert">
+    <meta name="geo.region" content="US-CA">
+    <meta name="geo.placename" content="Los Angeles">
+    <meta name="geo.position" content="34.0522;-118.2437">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+        }
+        .btn-primary {
+            @apply bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700;
+        }
+        .health-bar {
+            transition: width 1s ease-in-out;
+            height: 8px;
+            border-radius: 4px;
+        }
+        .health-indicator {
+            background: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <nav class="bg-blue-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-8">
+                    <a href="#" class="text-2xl font-bold">West LA Computer Expert</a>
+                    <div class="hidden md:flex space-x-4">
+                        <a href="#services" class="hover:text-blue-200">Services</a>
+                        <a href="#booking-form" class="hover:text-blue-200">Book Now</a>
+                        <a href="#contact" class="hover:text-blue-200">Contact</a>
+                        <a href="/admin.html" class="hover:text-blue-200">Admin Dashboard</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="mailto:support@westlacomputerexpert.tech" class="text-sm hover:text-blue-200">
+                        support@westlacomputerexpert.tech
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section>
+            <div class="container mx-auto text-center px-4">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 font-heading">Smart IT Solutions with AI</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto">Get instant computer diagnostics and expert solutions powered by artificial intelligence</p>
+                <button id="start-diagnostic" class="px-8 py-3 rounded-lg font-medium transition duration-200 flex items-center justify-center">
+                    <span>Start AI Diagnostic</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- AI Features Section -->
+        <section id="ai-diagnostic">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">AI-Powered Tools</h2>
+                
+                <!-- Visual Diagnostics -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">AI Visual Diagnostics</h3>
+                    <p class="mb-4">Upload screenshots of error messages or photos of hardware issues for instant AI analysis.</p>
+                    <div class="flex flex-col space-y-4">
+                        <div class="flex items-center justify-center w-full">
+                            <label for="visual-diagnostic-upload" class="w-full flex flex-col items-center px-4 py-6 cursor-pointer">
+                                <span class="mt-2 text-sm">Select an image</span>
+                                <input type="file" class="hidden" id="visual-diagnostic-upload" accept="image/*" />
+                            </label>
+                        </div>
+                        <div id="visual-analysis-result" class="hidden"></div>
+                    </div>
+                </div>
+
+                <!-- Predictive Maintenance -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Predictive Maintenance</h3>
+                    <p class="mb-4">AI-powered system monitoring to predict and prevent future issues.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <div>
+                            <h4 class="font-semibold mb-2">Hardware Health</h4>
+                            <div class="health-indicator" id="hardware-health">
+                                <div class="flex justify-between mb-1">
+                                    <span>Status:</span>
+                                    <span class="health-status">Checking...</span>
+                                </div>
+                                <div class="w-full">
+                                    <div class="health-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Performance Trend</h4>
+                            <div class="health-indicator" id="performance-trend">
+                                <div class="flex justify-between mb-1">
+                                    <span>Status:</span>
+                                    <span class="health-status">Checking...</span>
+                                </div>
+                                <div class="w-full">
+                                    <div class="health-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Security Status</h4>
+                            <div class="health-indicator" id="security-status">
+                                <div class="flex justify-between mb-1">
+                                    <span>Status:</span>
+                                    <span class="health-status">Checking...</span>
+                                </div>
+                                <div class="w-full">
+                                    <div class="health-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="start-prediction" class="w-full">
+                        Start Predictive Analysis
+                    </button>
+                </div>
+
+                <!-- Smart Price Estimator -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Smart Price Estimator</h3>
+                    <p class="mb-4">Get accurate cost estimates based on AI analysis of your computer issues.</p>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Issue Type</label>
+                            <select id="issue-type" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                <option>Hardware Problem</option>
+                                <option>Software Issue</option>
+                                <option>Network Problem</option>
+                                <option>Data Recovery</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Urgency Level</label>
+                            <select id="urgency-level" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                <option>Standard</option>
+                                <option>Urgent</option>
+                                <option>Emergency</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Issue Description</label>
+                            <textarea id="issue-description" class="mt-1 block w-full px-3 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" rows="3"></textarea>
+                        </div>
+                        <button id="get-estimate" class="w-full">
+                            Get Estimate
+                        </button>
+                    </div>
+                </div>
+
+                <!-- System Scanner -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">System Health Scanner</h3>
+                    <p class="mb-4">Get a comprehensive analysis of your system's performance and health.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium">CPU Usage</span>
+                                <span id="cpu-health" class="text-green-600">0%</span>
+                            </div>
+                            <div class="w-full">
+                                <div id="cpu-bar" class="rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium">Memory</span>
+                                <span id="memory-health" class="text-yellow-500">0%</span>
+                            </div>
+                            <div class="w-full">
+                                <div id="memory-bar" class="rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium">Disk Health</span>
+                                <span id="disk-health" class="text-red-500">0%</span>
+                            </div>
+                            <div class="w-full">
+                                <div id="disk-bar" class="rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="start-scan" class="w-full">
+                        Start System Scan
+                    </button>
+                </div>
+
+                <!-- Issue Analyzer -->
+                <div class="bg-gray-50 rounded-lg p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">AI Issue Analyzer</h3>
+                    <p class="mb-4 text-gray-600">Describe your computer issues and get AI-powered solutions.</p>
+                    <div class="space-y-4">
+                        <textarea id="main-issue" 
+                                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                                rows="3" 
+                                placeholder="Type your computer issue here..."></textarea>
+                        <button onclick="analyzeMainIssue()" 
+                                class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-200 font-medium">
+                            Analyze Issue
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Performance Optimizer -->
+                <div class="bg-white rounded-lg p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">AI Performance Optimizer</h3>
+                    <p class="mb-4">Let our AI analyze and optimize your system performance.</p>
+                    
+                    <!-- Optimization Options -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="optimization-item">
+                            <input type="checkbox" id="startup-opt" class="mr-2" checked>
+                            <label for="startup-opt">Startup Programs</label>
+                        </div>
+                        <div class="optimization-item">
+                            <input type="checkbox" id="disk-opt" class="mr-2" checked>
+                            <label for="disk-opt">Disk Cleanup</label>
+                        </div>
+                        <div class="optimization-item">
+                            <input type="checkbox" id="registry-opt" class="mr-2" checked>
+                            <label for="registry-opt">Registry Optimization</label>
+                        </div>
+                    </div>
+
+                    <!-- Health Indicators -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-3">System Health</h4>
+                            <div class="health-indicator" id="hardware-health">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm text-gray-600">Status:</span>
+                                    <span class="health-status text-sm font-medium">Checking...</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="health-bar bg-green-600 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-3">Performance</h4>
+                            <div class="health-indicator" id="performance-trend">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm text-gray-600">Status:</span>
+                                    <span class="health-status text-sm font-medium">Checking...</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="health-bar bg-green-600 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-3">Security</h4>
+                            <div class="health-indicator" id="security-status">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm text-gray-600">Status:</span>
+                                    <span class="health-status text-sm font-medium">Checking...</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="health-bar bg-green-600 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="start-optimize" class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-200 font-medium">
+                        Start Optimization
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-4 font-heading">Our Services</h2>
+                <p class="text-center mb-12 max-w-2xl mx-auto">Professional computer repair and maintenance services tailored to your needs</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="service-card bg-white rounded-lg p-6 shadow-lg" data-service="hardware">
+                        <div class="flex items-center mb-4">
+                            <div class="p-2 rounded-lg bg-blue-100 text-blue-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold ml-3 font-heading">Hardware Repair</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Expert diagnosis and repair of computer hardware issues</p>
+                        <div class="text-blue-600 font-medium mb-4">Starting from $49</div>
+                        <button onclick="bookService('hardware')" class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-200">
+                            Book Now
+                        </button>
+                    </div>
+
+                    <div class="service-card bg-white rounded-lg p-6 shadow-lg" data-service="data">
+                        <div class="flex items-center mb-4">
+                            <div class="p-2 rounded-lg bg-blue-100 text-blue-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold ml-3 font-heading">Data Recovery</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Professional recovery of lost or corrupted data</p>
+                        <div class="text-blue-600 font-medium mb-4">Starting from $79</div>
+                        <button onclick="bookService('data')" class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-200">
+                            Book Now
+                        </button>
+                    </div>
+
+                    <div class="service-card bg-white rounded-lg p-6 shadow-lg" data-service="virus">
+                        <div class="flex items-center mb-4">
+                            <div class="p-2 rounded-lg bg-blue-100 text-blue-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold ml-3 font-heading">Virus Removal</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Complete virus and malware removal service</p>
+                        <div class="text-blue-600 font-medium mb-4">Starting from $59</div>
+                        <button onclick="bookService('virus')" class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-200">
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chat Support -->
+        <div id="chat-widget" class="fixed bottom-4 right-4">
+            <button id="chat-toggle" class="p-4 rounded-full shadow-lg">
+                <span class="sr-only">Open Chat</span>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                </svg>
+            </button>
+        </div>
+    </main>
+
+    <div id="booking-form">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Book a Service</h2>
+            <div class="max-w-lg mx-auto bg-white rounded-lg shadow-lg p-6">
+                <form id="service-booking-form" class="space-y-4">
+                    <div>
+                        <label id="name-label" for="booking-name" class="block mb-2 font-medium">Name</label>
+                        <input type="text" id="booking-name" name="booking-name" aria-labelledby="name-label" class="w-full p-2 border rounded" required>
+                    </div>
+                    <div>
+                        <label id="email-label" for="booking-email" class="block mb-2 font-medium">Email</label>
+                        <input type="email" id="booking-email" name="booking-email" aria-labelledby="email-label" class="w-full p-2 border rounded" required>
+                    </div>
+                    <div>
+                        <label id="phone-label" for="booking-phone" class="block mb-2 font-medium">Phone</label>
+                        <input type="tel" id="booking-phone" name="booking-phone" aria-labelledby="phone-label" class="w-full p-2 border rounded" required>
+                    </div>
+                    <div>
+                        <label id="service-label" for="booking-service" class="block mb-2 font-medium">Service Type</label>
+                        <select id="booking-service" name="booking-service" aria-labelledby="service-label" class="w-full p-2 border rounded" required>
+                            <option value="">Select a service</option>
+                            <option value="Hardware Repair">Hardware Repair</option>
+                            <option value="Software Issue">Software Issue</option>
+                            <option value="Network Problem">Network Problem</option>
+                            <option value="Virus Removal">Virus Removal</option>
+                            <option value="Data Recovery">Data Recovery</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label id="date-label" for="booking-date" class="block mb-2 font-medium">Preferred Date</label>
+                        <input type="date" id="booking-date" name="booking-date" aria-labelledby="date-label" class="w-full p-2 border rounded" required>
+                    </div>
+                    <div>
+                        <label id="time-label" for="booking-time" class="block mb-2 font-medium">Preferred Time</label>
+                        <select id="booking-time" name="booking-time" aria-labelledby="time-label" class="w-full p-2 border rounded" required>
+                            <option value="">Select time...</option>
+                            <option value="Morning (9AM - 12PM)">Morning (9AM - 12PM)</option>
+                            <option value="Afternoon (12PM - 4PM)">Afternoon (12PM - 4PM)</option>
+                            <option value="Evening (4PM - 7PM)">Evening (4PM - 7PM)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label id="notes-label" for="booking-notes" class="block mb-2 font-medium">Additional Notes</label>
+                        <textarea id="booking-notes" name="booking-notes" aria-labelledby="notes-label" class="w-full p-2 border rounded" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-200">
+                        Submit Booking
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">West LA Computer Expert</h3>
+                    <p class="text-gray-300">Professional computer repair and IT services in West Los Angeles.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>
+                            <span class="font-medium">Email:</span>
+                            <a href="mailto:support@westlacomputerexpert.tech" class="hover:text-white">support@westlacomputerexpert.tech</a>
+                        </li>
+                        <li>
+                            <span class="font-medium">Phone:</span>
+                            <a href="tel:+13108508093" class="hover:text-white">(310) 850-8093</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Hours</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>Monday - Friday: 9AM - 7PM</li>
+                        <li>Saturday: 10AM - 5PM</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2025 West LA Computer Expert. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main Issue Analyzer Script -->
+    <script>
+        function analyzeMainIssue() {
+            const text = document.getElementById('main-issue').value;
+            
+            if (!text || !text.trim()) {
+                alert('Please describe your issue first.');
+                return;
+            }
+
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50';
+            modal.innerHTML = `
+                <div class="bg-white rounded-lg p-6 max-w-lg w-full shadow-xl">
+                    <h3 class="text-xl font-bold mb-4">Analysis Results</h3>
+                    <p class="mb-4 text-gray-600">Based on your description:</p>
+                    <p class="bg-gray-50 p-4 rounded-lg mb-4 text-gray-800">${text}</p>
+                    <p class="mb-6 text-gray-600">We recommend scheduling a diagnostic service with our experts.</p>
+                    <div class="flex gap-4">
+                        <button onclick="this.closest('.fixed').remove()" 
+                                class="flex-1 bg-gray-500 text-white py-3 px-4 rounded-lg hover:bg-gray-600 transition duration-200">
+                            Close
+                        </button>
+                        <button onclick="document.getElementById('booking-form').scrollIntoView({behavior:'smooth'}); 
+                                       this.closest('.fixed').remove()" 
+                                class="flex-1 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-200">
+                            Book Service
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        function bookService(service) {
+            const form = document.getElementById('booking-form');
+            const select = document.getElementById('booking-service');
+            if (select) {
+                select.value = service;
+            }
+            form.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+    <!-- Other Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        window.onload = function() {
+            try {
+                emailjs.init("Qois2JZE0LgoHE4BC");
+                console.log('EmailJS initialized successfully');
+                
+                // Test EmailJS connection
+                emailjs.send("service_5i8r67b", "template_7tcp9kf", {
+                    name: "Test User",
+                    email: "test@example.com",
+                    phone: "123-456-7890",
+                    service: "Hardware Repair",
+                    date: "2025-01-30",
+                    time: "morning",
+                    notes: "Test booking"
+                }).then(
+                    function(response) {
+                        console.log("Test email SUCCESS", response);
+                    },
+                    function(error) {
+                        console.log("Test email FAILED", error);
+                    }
+                );
+            } catch (error) {
+                console.error('EmailJS initialization failed:', error);
+            }
+        };
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

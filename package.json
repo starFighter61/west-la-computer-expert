@@ -1,0 +1,12 @@
+{
+  "name": "west-la-computer-expert",
+  "version": "1.0.0",
+  "description": "West LA Computer Expert Website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "nodemailer": "^6.10.0"
+  }
+}

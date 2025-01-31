@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Issue Analyzer</title>
+    <style>
+        body { font-family: Arial; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        textarea { width: 100%; height: 100px; padding: 10px; margin: 10px 0; }
+        button { 
+            background: #2563eb; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Issue Analyzer</h1>
+        <p>Describe your computer issues:</p>
+        <textarea id="issue"></textarea>
+        <br>
+        <button onclick="analyze()">Analyze Issue</button>
+        <div id="debug"></div>
+    </div>
+
+    <script>
+        function analyze() {
+            const text = document.getElementById('issue').value;
+            document.getElementById('debug').textContent = 'Debug: [' + text + ']';
+            
+            if (!text || !text.trim()) {
+                alert('Please describe your issue first.');
+                return;
+            }
+
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <h2>Analysis Results</h2>
+                    <p>Based on your description:</p>
+                    <p style="background: #f0f0f0; padding: 10px; border-radius: 4px;">${text}</p>
+                    <p>We recommend scheduling a diagnostic service with our experts.</p>
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button onclick="this.closest('.modal').remove()" style="background: #666;">
+                            Close
+                        </button>
+                        <button onclick="window.location.href='#booking'">
+                            Book Service
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+    </script>
+</body>
+</html>
