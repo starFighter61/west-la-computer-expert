@@ -4,4 +4,4 @@ Disallow: /admin.html
 Disallow: /admin
 
 # Sitemap
-Sitemap: https://westlacomputerexpert.tech/sitemap.xml
+Sitemap: https://smart-itsolutionswithai.com/sitemap.xml
