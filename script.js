@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Button functionality
     function showDiagnosticModal() {
+        console.log('Showing diagnostic modal');
         const modal = document.createElement('div');
         modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50';
         modal.innerHTML = `
@@ -505,35 +506,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Find the diagnostic button
     const diagnosticButton = document.getElementById('start-diagnostic');
+    console.log('Diagnostic button:', diagnosticButton);
     if (diagnosticButton) {
+        console.log('Adding click listener to diagnostic button');
         diagnosticButton.addEventListener('click', function() {
             console.log('Diagnostic button clicked');
             showDiagnosticModal();
         });
+    } else {
+        console.error('Diagnostic button not found in DOM');
     }
 
     // Performance Optimizer button
     const startOptimizeBtn = document.getElementById('start-optimize');
+    console.log('Optimize button:', startOptimizeBtn);
     if (startOptimizeBtn) {
-        console.log('Found optimize button, adding click listener');
+        console.log('Adding click listener to optimize button');
         startOptimizeBtn.addEventListener('click', function() {
             console.log('Optimize button clicked');
             startPredictiveAnalysis();
         });
     } else {
-        console.error('Optimize button not found!');
+        console.error('Optimize button not found in DOM');
     }
 
     // Start Predictive Analysis button
     const predictiveBtn = document.getElementById('start-prediction');
+    console.log('Predictive button:', predictiveBtn);
     if (predictiveBtn) {
+        console.log('Adding click listener to predictive button');
         predictiveBtn.addEventListener('click', startPredictiveAnalysis);
+    } else {
+        console.error('Predictive button not found in DOM');
     }
 
     // Get Estimate button
     const estimateBtn = document.getElementById('get-estimate');
+    console.log('Estimate button:', estimateBtn);
     if (estimateBtn) {
+        console.log('Adding click listener to estimate button');
         estimateBtn.addEventListener('click', calculateEstimate);
+    } else {
+        console.error('Estimate button not found in DOM');
     }
 
     // Book Now buttons
