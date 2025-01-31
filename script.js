@@ -597,37 +597,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Send admin notification
                 console.log('Sending admin email...');
                 const adminResponse = await emailjs.send(
-                    'service_5i8r67b',
-                    'template_91xgo8x',
-                    adminData,
-                    'Qois2JZE0LgoHE4BC'
+                    emailConfig.serviceId,
+                    emailConfig.templateIdAdmin,
+                    adminData
                 );
-                console.log('Admin email response:', adminResponse);
+                console.log('Admin email sent:', adminResponse);
 
-                // Prepare customer email data
+                // Prepare customer notification data
                 const customerData = {
-                    from_name: formData.name,
-                    from_email: formData.email,
+                    to_name: formData.name,
+                    to_email: formData.email,
+                    booking_id: bookingId,
                     service: formData.service,
                     date: formData.date,
-                    time: formData.time,
-                    booking_id: bookingId,
-                    notes: formData.notes,
-                    shop_email: 'support@westlacomputerexpert.tech',
-                    shop_phone: '(310) 850-8093'
+                    time: formData.time
                 };
 
                 console.log('Customer email data:', customerData);
 
-                // Send customer confirmation email
+                // Send customer notification
                 console.log('Sending customer email...');
                 const customerResponse = await emailjs.send(
-                    'service_5i8r67b',
-                    'template_7tcp9kf',
-                    customerData,
-                    'Qois2JZE0LgoHE4BC'
+                    emailConfig.serviceId,
+                    emailConfig.templateIdCustomer,
+                    customerData
                 );
-                console.log('Customer email response:', customerResponse);
+
+                console.log('Customer email sent:', customerResponse);
 
                 if (customerResponse.status === 200 && adminResponse.status === 200) {
                     // Save booking to localStorage

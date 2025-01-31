@@ -519,33 +519,11 @@
 
     <!-- Other Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="config.js"></script>
     <script>
-        window.onload = function() {
-            try {
-                emailjs.init("Qois2JZE0LgoHE4BC");
-                console.log('EmailJS initialized successfully');
-                
-                // Test EmailJS connection
-                emailjs.send("service_5i8r67b", "template_7tcp9kf", {
-                    name: "Test User",
-                    email: "test@example.com",
-                    phone: "123-456-7890",
-                    service: "Hardware Repair",
-                    date: "2025-01-30",
-                    time: "morning",
-                    notes: "Test booking"
-                }).then(
-                    function(response) {
-                        console.log("Test email SUCCESS", response);
-                    },
-                    function(error) {
-                        console.log("Test email FAILED", error);
-                    }
-                );
-            } catch (error) {
-                console.error('EmailJS initialization failed:', error);
-            }
-        };
+        (function() {
+            emailjs.init(emailConfig.userId);
+        })();
     </script>
     <script src="script.js"></script>
 </body>
