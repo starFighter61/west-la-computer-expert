@@ -33,16 +33,16 @@ function setupEventListeners() {
         });
     });
 
-    // Booking form submission
-    const bookingForm = document.getElementById('service-booking-form');
-    if (bookingForm) {
-        bookingForm.addEventListener('submit', handleBookingSubmit);
-    }
-
     // Issue analyzer
     const analyzeBtn = document.getElementById('analyze-issue-btn');
     if (analyzeBtn) {
         analyzeBtn.addEventListener('click', analyzeMainIssue);
+    }
+
+    // Booking form submission
+    const bookingForm = document.getElementById('service-booking-form');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', handleBookingSubmit);
     }
 }
 
@@ -90,48 +90,46 @@ function analyzeMainIssue() {
         return;
     }
 
-    // Show loading state
-    const analyzeBtn = document.getElementById('analyze-issue-btn');
-    if (analyzeBtn) {
-        analyzeBtn.disabled = true;
-        analyzeBtn.textContent = 'Analyzing...';
-    }
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50';
+    modal.innerHTML = `
+        <div class="bg-white rounded-lg p-6 max-w-lg w-full shadow-xl">
+            <h3 class="text-xl font-bold mb-4">Analysis Results</h3>
+            <p class="mb-4 text-gray-600">Based on your description:</p>
+            <p class="bg-gray-50 p-4 rounded-lg mb-4 text-gray-800">${issue}</p>
+            <p class="mb-6 text-gray-600">We recommend scheduling a diagnostic service with our experts.</p>
+            <div class="flex gap-4">
+                <button class="close-modal flex-1 bg-gray-500 text-white py-3 px-4 rounded-lg hover:bg-gray-600 transition duration-200">
+                    Close
+                </button>
+                <button class="book-service flex-1 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-200">
+                    Book Service
+                </button>
+            </div>
+        </div>
+    `;
 
-    // Simulate analysis (replace with actual API call)
-    setTimeout(() => {
-        const result = generateAnalysis(issue);
-        showResultsModal('Analysis Results', result);
-        
-        // Reset button state
-        if (analyzeBtn) {
-            analyzeBtn.disabled = false;
-            analyzeBtn.textContent = 'Analyze Issue';
-        }
-    }, 1500);
-}
+    document.body.appendChild(modal);
 
-function generateAnalysis(issue) {
-    // Simple analysis logic (replace with actual AI analysis)
-    const commonIssues = {
-        'slow': 'Your system may need optimization. Recommended actions:\n- Disk cleanup\n- Memory optimization\n- Background process review',
-        'crash': 'System stability issues detected. Recommended actions:\n- Check system logs\n- Update drivers\n- Scan for malware',
-        'virus': 'Potential security concern. Recommended actions:\n- Run full system scan\n- Update antivirus\n- Check startup programs',
-        'default': 'General system check recommended. Our technicians can help diagnose and resolve your issue.'
-    };
-
-    const issueType = Object.keys(commonIssues).find(type => issue.toLowerCase().includes(type));
-    return commonIssues[issueType] || commonIssues.default;
+    // Add click handlers for modal buttons
+    modal.querySelector('.close-modal').addEventListener('click', () => modal.remove());
+    modal.querySelector('.book-service').addEventListener('click', () => {
+        modal.remove();
+        bookService('Diagnostic Service');
+    });
 }
 
 function bookService(service) {
     debug('Booking service:', service);
     const bookingForm = document.getElementById('booking-form');
-    if (bookingForm) {
+    const serviceInput = document.getElementById('service-type');
+    
+    if (bookingForm && serviceInput) {
         bookingForm.style.display = 'block';
-        const serviceInput = document.getElementById('service-type');
-        if (serviceInput) {
-            serviceInput.value = service;
-        }
+        serviceInput.value = service;
+        bookingForm.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        debug('Booking form or service input not found');
     }
 }
 
@@ -162,8 +160,7 @@ async function handleBookingSubmit(e) {
         await emailjs.send(
             emailConfig.serviceId,
             emailConfig.templateId,
-            templateParams,
-            emailConfig.userId
+            templateParams
         );
 
         alert('Booking request sent successfully! We will contact you shortly.');
@@ -180,21 +177,6 @@ async function handleBookingSubmit(e) {
             submitBtn.textContent = 'Submit Booking';
         }
     }
-}
-
-function showResultsModal(title, content) {
-    const modal = document.createElement('div');
-    modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4';
-    modal.innerHTML = `
-        <div class="bg-white rounded-lg p-6 max-w-lg w-full">
-            <h3 class="text-xl font-semibold mb-4">${title}</h3>
-            <div class="mb-6 whitespace-pre-wrap">${content}</div>
-            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Close</button>
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-    modal.querySelector('button').onclick = () => modal.remove();
 }
 
 function showDiagnosticModal() {
